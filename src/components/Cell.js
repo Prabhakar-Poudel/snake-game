@@ -2,9 +2,10 @@ import React from 'react'
 import '../styles/Cell.css'
 
 const Cell = (props) => {
-    const {i, j, highlight} = props
-    const className = highlight ? "highlighted-cell" : ""
-    return <div className={className}></div>
+    const {isEgg, highlight} = props
+    let className = highlight ? "highlighted-cell" : ""
+    className += isEgg ? " egg" : ''
+    return <div className={className} ></div>
 }
 
 export default Cell;

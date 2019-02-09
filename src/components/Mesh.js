@@ -18,7 +18,7 @@ class Mesh extends Component {
         for (let x=0; x < size; x++) {
             cells[x] = [];
             for (let y=0; y < size; y++) {
-                cells[x][y] = <Cell key={x + '' + y} i={x} j={y}/>
+                cells[x][y] = <Cell key={x + '' + y} />
             }
         }
         return cells
@@ -33,10 +33,10 @@ class Mesh extends Component {
         const cells = this.getCells()
         this.props.snake.forEach(cell => {
             const {x, y} = cell;
-            cells[x][y] = <Cell key={x + '' + y}  i={x} j={y} highlight />
+            cells[x][y] = <Cell key={x + '' + y} highlight />
         });
         const egg = this.props.egg
-        cells[egg.x][egg.y] = <Cell key={egg.x + '' + egg.y} i={egg.x} j={egg.y} highlight />
+        cells[egg.x][egg.y] = <Cell key={egg.x + '' + egg.y} highlight isEgg />
         return (
             <div
              className="mesh"

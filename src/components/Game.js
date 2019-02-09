@@ -4,6 +4,7 @@ import Home from './Home'
 import '../styles/Game.css'
 
 const BOARD_SIZE = 20
+const BASE_SCORE = 5
 
 class Game extends Component {
     // TODO: Randomly generate snake coordinates
@@ -19,7 +20,9 @@ class Game extends Component {
       this.state = {
         snake: null,
         egg: null,
-        begin: false
+        begin: false,
+        currentScore: 0,
+        gameOver: false
       }
     }
 
@@ -52,7 +55,8 @@ class Game extends Component {
       snake.unshift(head)
       if (this.isSamePosition(this.state.egg, head)) {
         const newEgg = this.getNewEgg(snake)
-        this.setState({snake: snake, egg: newEgg})
+        const score = this.state.currentScore + snake.length + BASE_SCORE
+        this.setState({snake: snake, egg: newEgg, currentScore: score})
       } else {
         snake.pop()
         this.setState({snake: snake})
@@ -76,13 +80,16 @@ class Game extends Component {
     beginGame = () => {
       const snake = this.getSnake()
       const egg = this.getNewEgg(snake)
-      this.setState({begin: true, snake: snake, egg: egg})
+      this.setState({begin: true, snake: snake, egg: egg, currentScore: 0})
       this.startInterval()
     }
 
     endGame = () => {
       this.endInterval()
-      this.setState({begin: false})
+      this.setState({gameOver: true})
+      setTimeout(() => {
+        this.setState({begin: false, gameOver: false})
+      }, 3000)
     }
     
     componentWillUnmount = () => this.endInterval()
@@ -110,6 +117,9 @@ class Game extends Component {
     }
 
     handleKeyPress = (key) => {
+      if (this.state.gameOver || !this.state.begin) {
+        return  // disable key events after the game is over
+      }
       // eslint-disable-next-line default-case
       switch(key) {
         case 'ArrowLeft':
@@ -149,18 +159,26 @@ class Game extends Component {
     render() {
       let homePage = <Home handleStart={this.beginGame}/>
       let meshPage = (
-            <div className="game">
-              <Mesh 
-              size={BOARD_SIZE} 
-              snake={this.state.snake} 
-              egg={this.state.egg}
-              handleKeyPress={this.handleKeyPress}
-              />
-            </div>
-          )
+        <div className="game">
+          <Mesh 
+            size={BOARD_SIZE} 
+            snake={this.state.snake} 
+            egg={this.state.egg}
+            handleKeyPress={this.handleKeyPress}
+            />
+          <div className="score-board">
+            Score: {this.state.currentScore}
+          </div>
+        </div>
+      )
       const children = this.state.begin ? meshPage : homePage
+      const overlayStyle = {display: this.state.gameOver ? 'block' : 'none'}
       return (
-        <div>Welcome!
+        <div className="game-area">
+          <h1>Snake Mania!</h1>
+          <div className="overlay"  style={overlayStyle}>
+            Game Over
+          </div>
           {children}
         </div>
       )

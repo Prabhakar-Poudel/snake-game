@@ -1,0 +1,16 @@
+.home-screen {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-screen button {
+    height: 50px;
+    width: 180px;
+    font-size: 34px;
+    background-color: lightgreen;
+    border-color: yellow;
+    border-radius: 8px;
+    border-style: solid;
+    letter-spacing: 2px;
+}

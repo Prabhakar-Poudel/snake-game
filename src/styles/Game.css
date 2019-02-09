@@ -1,4 +1,43 @@
 .game {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+}
+
+.game-area {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-board {
+    height: 30px;
+    background-color: rgb(0, 255, 170);
+    color: chocolate;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid black;
+    border-top: 0px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 5px 0;
+}
+
+.overlay {
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    /* A small hack to position overlay properly. TODO: Will fix later */
+    top: 102px; 
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    text-align: center;
+    font-size: 30px;
+    color: chocolate;
 }
