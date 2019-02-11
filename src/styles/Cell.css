@@ -1,22 +1,10 @@
 .highlighted-cell {
- background-color: #FFEB3B;
- border-radius: 5px;
- border: 0.5px solid black;
-}
-
-.highlighted-cell.egg {
-    border-radius: 50%;
-}
-
-@keyframes pulseEgg {
-    from { transform: scale(1); }
-    50% { transform: scale(0.90); }
-    to { transform: scale(1); }
+    background-color: #FFEB3B;
+    border-radius: 5px;
+    border: 0.5px solid black;
 }
   
-.egg {
-    animation-name: pulseEgg;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
+.egg.highlighted-cell {
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 }
 

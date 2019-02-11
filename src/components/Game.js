@@ -7,8 +7,6 @@ const BOARD_SIZE = 20
 const BASE_SCORE = 5
 
 class Game extends Component {
-    // TODO: Randomly generate snake coordinates
-    // Generate starting coordinate and direction based on it
     constructor(props) {
       super(props)
       this.direction = {

@@ -12,4 +12,4 @@ The app should start at `localhost:3000`
 
 ### Live version:
 
-The app is deployed in netlify.com [at this address](https://dreamy-borg-da5d38.netlify.com/)
+The app is deployed in netlify.com [at this address](https://snakemania.netlify.com/)
