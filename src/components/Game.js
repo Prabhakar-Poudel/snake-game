@@ -30,7 +30,7 @@ class Game extends Component {
 
     getSnake() {
       const initial = this.getRandomPoint(2, BOARD_SIZE-3)
-      const direction = this.getPsudoRandomDirection(initial.x, initial.y)
+      const direction = this.getPseudorandomDirection(initial.x, initial.y)
       const snake = [initial]
       snake.unshift({x: initial.x + direction.x, y: initial.y + direction.y})
       snake.unshift({x: initial.x + 2*direction.x, y: initial.y + 2*direction.y})
@@ -98,7 +98,7 @@ class Game extends Component {
       return {x: x, y: y}
     }
 
-    getPsudoRandomDirection(x, y) {
+    getPseudorandomDirection(x, y) {
       const half = BOARD_SIZE / 2
       if (x < half) {
         if (y < half) {
